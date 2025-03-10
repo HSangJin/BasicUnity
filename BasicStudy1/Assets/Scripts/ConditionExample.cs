@@ -1,16 +1,16 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class ConditionExample : MonoBehaviour
 {
-    //¿¬»êÀÚ¿Í Á¶°Ç¹®
+    //ì—°ì‚°ìì™€ ì¡°ê±´ë¬¸
     public int health = 100;
 
     void Update()
     {
-        health -= 1; //Ã¼·Â°¨¼Ò
+        health -= 1; //ì²´ë ¥ê°ì†Œ
         Debug.Log("Health : " + health);
 
-        //Á¶°Ç¹®
+        //ì¡°ê±´ë¬¸
         if (health <= 0)
         {
             Debug.Log("Game Over!");

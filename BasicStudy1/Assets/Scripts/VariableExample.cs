@@ -1,8 +1,8 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class VariableExample : MonoBehaviour
 {
-    //º¯¼ö ¼±¾ð
+    //ë³€ìˆ˜ ì„ ì–¸
     public int playerScore = 0;
     public float speed = 5.5f;
     public string playerName = "Hero";
