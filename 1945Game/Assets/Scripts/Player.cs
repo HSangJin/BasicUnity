@@ -1,11 +1,19 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     //스피드
     public float moveSpeed = 5f;
     Animator anim;
-    public Launcher launcher;
+    //public Launcher launcher;
+    public GameObject[] bullet; //총알 추후 4개 배열로 만들예정
+    public Transform pos = null;
+    public int bulletCount = 0;
+
+    //아이템
+
+    //레이저
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -34,6 +42,11 @@ public class Player : MonoBehaviour
 
         anim.SetBool("up", moveX == 0f && Input.GetAxis("Vertical") >= 0.5f);
 
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            Instantiate(bullet[bulletCount < bullet.Length ? bulletCount : bullet.Length - 1], pos.position, Quaternion.identity);
+        }
+
         transform.Translate(new Vector3 (moveX, moveY, 0));
     }
 
@@ -42,9 +55,10 @@ public class Player : MonoBehaviour
         if(collision.gameObject.layer == 6)
         {
             Destroy(collision.gameObject);
-            if (launcher.count > 4)
-                return;
-            launcher.count += 1;
+            //if (launcher.count > 4)
+            //    return;
+            //launcher.count += 1;
+            bulletCount += 1;
         }
     }
 }
