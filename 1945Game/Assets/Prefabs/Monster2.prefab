@@ -267,3 +267,4 @@ MonoBehaviour:
   m1: {fileID: 8017549971670234385}
   m2: {fileID: 9016177621146691337}
   bullet: {fileID: 7132466083963361089, guid: ce1352a73f399f043a467f817bef4dd3, type: 3}
+  item: {fileID: 7071086358574197514, guid: 951c98aabfca5f442bb2d3f7915323dd, type: 3}

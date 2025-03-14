@@ -7,6 +7,7 @@ public class Monster : MonoBehaviour
     public Transform m1;
     public Transform m2;
     public GameObject bullet;
+    public GameObject item;
 
     void Start()
     {
@@ -22,15 +23,28 @@ public class Monster : MonoBehaviour
         Invoke("CreateBullet", delay);
     }
 
-    private void FixedUpdate()
-    {
-        transform.Translate(Vector3.down * speed * Time.deltaTime);
-    }
-    //void Update()
+    //private void FixedUpdate()
     //{
-    //    //아래 방향으로 움직여라
     //    transform.Translate(Vector3.down * speed * Time.deltaTime);
     //}
+    void Update()
+    {
+        //아래 방향으로 움직여라
+        transform.Translate(Vector3.down * speed * Time.deltaTime);
+    }
+
+    //미사일에 따른 데미지 입는 함수
+    public void Damage(int attack)
+    {
+        ItemDrop();
+        Destroy(gameObject);
+    }
+
+    public void ItemDrop()
+    {
+        //아이템 생성
+        Instantiate(item, transform.position, Quaternion.identity);
+    }
 
     private void OnBecameInvisible()
     {

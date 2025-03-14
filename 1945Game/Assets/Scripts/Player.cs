@@ -52,7 +52,7 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.layer == 6)
+        if(collision.CompareTag("Item"))
         {
             Destroy(collision.gameObject);
             //if (launcher.count > 4)

@@ -204,6 +204,7 @@ MonoBehaviour:
   m1: {fileID: 1207773857694554076}
   m2: {fileID: 6349245233472257486}
   bullet: {fileID: 8740247423179444011, guid: 528fe9c72106e1f49a6ab5c6b1ceb9c9, type: 3}
+  item: {fileID: 7071086358574197514, guid: 951c98aabfca5f442bb2d3f7915323dd, type: 3}
 --- !u!1 &8921589960814966775
 GameObject:
   m_ObjectHideFlags: 0

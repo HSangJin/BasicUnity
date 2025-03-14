@@ -31,10 +31,21 @@ public class PBullet : MonoBehaviour
             //1초뒤에 지우기
             Destroy(go, 1f);
 
-            //아이템 생성
-            Spawn.instance.SpawnItem(collision.transform.position);
+            ////아이템 생성
+            //Spawn.instance.SpawnItem(collision.transform.position);
             //몬스터
-            Destroy(collision.gameObject);
+            //Destroy(collision.gameObject);
+            collision.gameObject.GetComponent<Monster>().Damage(1);
+
+            //미사일 삭제
+            Destroy(gameObject);
+        }
+        else if (collision.CompareTag("Boss"))
+        {
+            //이펙트 생성
+            GameObject go = Instantiate(effect, collision.transform.position, Quaternion.identity);
+            //1초뒤에 지우기
+            Destroy(go, 1f);
 
             //미사일 삭제
             Destroy(gameObject);
