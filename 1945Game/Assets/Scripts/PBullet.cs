@@ -4,6 +4,7 @@ public class PBullet : MonoBehaviour
 {
     public float speed = 4.0f;
     //공격력
+    public int attack = 10;
     //이펙트
     public GameObject effect;
 
@@ -35,7 +36,7 @@ public class PBullet : MonoBehaviour
             //Spawn.instance.SpawnItem(collision.transform.position);
             //몬스터
             //Destroy(collision.gameObject);
-            collision.gameObject.GetComponent<Monster>().Damage(1);
+            collision.gameObject.GetComponent<Monster>().Damage(attack);
 
             //미사일 삭제
             Destroy(gameObject);

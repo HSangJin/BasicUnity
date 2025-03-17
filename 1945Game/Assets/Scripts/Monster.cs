@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
+    public int hp = 100;
     public float speed = 3f;
     public float delay = 1f;
     public Transform m1;
@@ -36,8 +37,12 @@ public class Monster : MonoBehaviour
     //미사일에 따른 데미지 입는 함수
     public void Damage(int attack)
     {
-        ItemDrop();
-        Destroy(gameObject);
+        hp -= attack;
+        if (hp < 0)
+        {
+            ItemDrop();
+            Destroy(gameObject);
+        }
     }
 
     public void ItemDrop()

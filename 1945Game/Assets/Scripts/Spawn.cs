@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class Spawn : MonoBehaviour
 {
-    public static Spawn instance;
 
     public float ss = -2f; //몬스터 생성 x값 처음
     public float es = 2; //몬스터 생성 x값 끝
@@ -11,21 +10,22 @@ public class Spawn : MonoBehaviour
     public float spawnStop = 10f; //스폰 끝나는 시간
     public GameObject monster;
     public GameObject monster2;
+    public GameObject boss;
 
     public GameObject item;
 
     bool swi = true;
     bool swi2 = true;
 
+    [SerializeField] GameObject textBossWarning;
+
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-            Destroy(gameObject);
+        textBossWarning.SetActive(false);
+
+        //PoolManager.Instance.CreatePool(monster, 10);
+        //PoolManager.Instance.CreatePool(monster2, 10);
+        //PoolManager.Instance.CreatePool(boss, 1);
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -53,6 +53,8 @@ public class Spawn : MonoBehaviour
             Vector2 r = new Vector2(x, transform.position.y);
             //몬스터 생성
             Instantiate(monster, r, Quaternion.identity);
+            //GameObject enemy = PoolManager.Instance.Get(monster);
+            //enemy.transform.position = r;
         }
     }
 
@@ -69,6 +71,8 @@ public class Spawn : MonoBehaviour
             Vector2 r = new Vector2(x, transform.position.y);
             //몬스터 생성
             Instantiate(monster2, r, Quaternion.identity);
+            //GameObject enemy = PoolManager.Instance.Get(monster2);
+            //enemy.transform.position = r;
         }
     }
 
@@ -85,7 +89,12 @@ public class Spawn : MonoBehaviour
     {
         swi2 = false;
         StopCoroutine(RandomSpawn2());
+        textBossWarning.SetActive(true);
         //보스
+        Vector3 pos = new Vector3(0f, 4f, 0f);
+        Instantiate(boss, pos, Quaternion.identity);
+        //GameObject _boss = PoolManager.Instance.Get(boss);
+        //_boss.transform.position = pos;
 
     }
 }

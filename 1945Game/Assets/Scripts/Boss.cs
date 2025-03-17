@@ -13,8 +13,14 @@ public class Boss : MonoBehaviour
 
     void Start()
     {
+        Invoke("Hide", 1f);
         StartCoroutine(BossMissle());
         StartCoroutine(CircleFire());
+    }
+
+    void Hide()
+    {
+        GameObject.Find("TextBossWarning").SetActive(false);
     }
 
     void Update()
