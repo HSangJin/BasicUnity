@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class Player : MonoBehaviour
     //레이저
     public GameObject lazer;
     public float gValue = 0f;
+
+    public Image gauge;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -57,12 +60,14 @@ public class Player : MonoBehaviour
                 Destroy(go, 3f);
                 gValue = 0f;
             }
+            gauge.fillAmount = gValue;
         }
         else
         {
             gValue -= Time.deltaTime;
             if(gValue <= 0f)
                 gValue = 0f;
+            gauge.fillAmount = gValue;
         }
 
         transform.Translate(new Vector3(moveX, moveY, 0));
