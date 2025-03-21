@@ -13,9 +13,23 @@ public class Boss : MonoBehaviour
 
     void Start()
     {
+        StartCoroutine(Shake());
         Invoke("Hide", 1f);
         StartCoroutine(BossMissle());
         StartCoroutine(CircleFire());
+    }
+
+    IEnumerator Shake()
+    {
+        CameraShake shake = GetComponent<CameraShake>();
+        WaitForSecondsRealtime wait = new WaitForSecondsRealtime(Time.fixedDeltaTime);
+        int count = 3;
+        while(count > 0)
+        {
+            shake.CameraShakeShow();
+            yield return wait;
+            count--;
+        }
     }
 
     void Hide()
